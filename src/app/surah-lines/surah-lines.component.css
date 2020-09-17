@@ -1,4 +1,13 @@
-p {
+.row {
+    text-align: center;
+    margin-top: 10%;
+}
+
+span {
     font-size: 72px;
     font-weight: bold;
+}
+
+span:hover {
+    background-color: aqua;
 }
