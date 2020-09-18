@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SurahService } from '../surah.service';
 import { ISurah } from '../surah';
+import { IWord } from '../word';
 
 @Component({
   selector: 'app-surah-lines',
@@ -11,7 +12,7 @@ import { ISurah } from '../surah';
 export class SurahLinesComponent implements OnInit {
 
   surah: ISurah;
-  ayahs: string[];
+  ayahs: IWord[] = [];
   errorMessage: string;
 
   constructor(private surahService: SurahService) { }
@@ -25,10 +26,9 @@ export class SurahLinesComponent implements OnInit {
     })
   }
 
-  breakdownSurah(surah:ISurah): string[] {
+  breakdownSurah(surah:ISurah): IWord[] {
 
-    //console.log('Surah: ' + surah.data[0].ayahs);
-    let abc: string[] = [];
+    let abc: IWord[] = [];
     let bismillah: string = "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ";
 
     //'count' is to allow the removal of Bismillah from the first verse in each surah
@@ -36,17 +36,29 @@ export class SurahLinesComponent implements OnInit {
 
     for(var section of surah.data[0].ayahs) {
 
+      let cde: IWord = new IWord();
+
       if(section.text.includes(bismillah) && count == 0){
-        abc.push(section.text.replace(bismillah, "").split(" "));
+        cde.splitWord = section.text.replace(bismillah, "").split(" ");
+        cde.totalVersenumber = section.number;
+        cde.numberInSurah = section.numberInSurah;
       }
       else {
-        abc.push(section.text.split(" "));
+        cde.splitWord = section.text.split(" ");
+        cde.totalVersenumber = section.number;
+        cde.numberInSurah = section.numberInSurah;
       }
 
+      abc.push(cde);
       count++;
-      //console.log("Ayah: " + section.text);
     }
 
     return abc;
+  }
+
+  clickCallback(word: string, ayah: IWord): void {
+    console.log("Word clicked: " + word);
+    console.log("Total Verse number clicked: " + ayah.totalVersenumber);
+    console.log("Number in surah clicked: " + ayah.numberInSurah);
   }
 }
