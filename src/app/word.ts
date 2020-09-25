@@ -1,5 +1,5 @@
-export class IWord {
+export class Word {
     splitWord: string[];
-    totalVersenumber: number;
-    numberInSurah: number;
+    overallVersenumber: number;
+    ayahNumberInSurah: number;
 }

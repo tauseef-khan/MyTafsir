@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SurahService } from '../surah.service';
 import { ISurah } from '../surah';
-import { IWord } from '../word';
+import { Word } from '../word';
 
 @Component({
   selector: 'app-surah-lines',
@@ -12,7 +12,7 @@ import { IWord } from '../word';
 export class SurahLinesComponent implements OnInit {
 
   surah: ISurah;
-  ayahs: IWord[] = [];
+  ayahs: Word[] = [];
   errorMessage: string;
 
   constructor(private surahService: SurahService) { }
@@ -26,39 +26,39 @@ export class SurahLinesComponent implements OnInit {
     })
   }
 
-  breakdownSurah(surah:ISurah): IWord[] {
+  breakdownSurah(surah:ISurah): Word[] {
 
-    let abc: IWord[] = [];
+    let splittedAyahs: Word[] = [];
     let bismillah: string = "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ";
 
-    //'count' is to allow the removal of Bismillah from the first verse in each surah
+    //'count' is to allow the removal of Bismillah from the first verse in each surah, if it exists
     let count: number = 0;
 
     for(var section of surah.data[0].ayahs) {
 
-      let cde: IWord = new IWord();
+      let splittedWord: Word = new Word();
 
       if(section.text.includes(bismillah) && count == 0){
-        cde.splitWord = section.text.replace(bismillah, "").split(" ");
-        cde.totalVersenumber = section.number;
-        cde.numberInSurah = section.numberInSurah;
+        splittedWord.splitWord = section.text.replace(bismillah, "").split(" ");
+        splittedWord.overallVersenumber = section.number;
+        splittedWord.ayahNumberInSurah = section.numberInSurah;
       }
       else {
-        cde.splitWord = section.text.split(" ");
-        cde.totalVersenumber = section.number;
-        cde.numberInSurah = section.numberInSurah;
+        splittedWord.splitWord = section.text.split(" ");
+        splittedWord.overallVersenumber = section.number;
+        splittedWord.ayahNumberInSurah = section.numberInSurah;
       }
 
-      abc.push(cde);
+      splittedAyahs.push(splittedWord);
       count++;
     }
 
-    return abc;
+    return splittedAyahs;
   }
 
-  clickCallback(word: string, ayah: IWord): void {
+  clickCallback(word: string, ayah: Word): void {
     console.log("Word clicked: " + word);
-    console.log("Total Verse number clicked: " + ayah.totalVersenumber);
-    console.log("Number in surah clicked: " + ayah.numberInSurah);
+    console.log("Overall verse number clicked: " + ayah.overallVersenumber);
+    console.log("Ayah number clicked: " + ayah.ayahNumberInSurah);
   }
 }
