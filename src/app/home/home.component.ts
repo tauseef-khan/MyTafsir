@@ -9,7 +9,14 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
+  message: string;
+
   ngOnInit(): void {
+  }
+
+  receiveMessage($event) {
+    this.message = $event;
+    console.log('Parent: ' + this.message);
   }
 
 }
