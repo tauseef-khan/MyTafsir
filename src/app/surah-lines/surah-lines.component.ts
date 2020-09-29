@@ -15,14 +15,13 @@ export class SurahLinesComponent implements OnInit {
   surah: ISurah;
   ayahs: Word[] = [];
   errorMessage: string;
-  message: string = 'Hello';
 
   @Output() messageEvent = new EventEmitter();
 
   constructor(private surahService: SurahService) { }
 
-  sendMessage() {
-    this.messageEvent.emit(this.message);
+  sendMessage(section: string, ayah: Word) {
+    this.messageEvent.emit({ section: section, ayah: ayah});
   }
 
   ngOnInit(): void {

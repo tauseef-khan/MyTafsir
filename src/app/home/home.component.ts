@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Word } from '../word';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +10,17 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
-  message: string;
+  ayah: Word;
+  word: string;
 
   ngOnInit(): void {
   }
 
   receiveMessage($event) {
-    this.message = $event;
-    console.log('Parent: ' + this.message);
+    this.ayah = $event.ayah; 
+    this.word = $event.section;
+    console.log('Parent: ' + this.word);
+    console.log('Parent: ' + this.ayah.overallVersenumber);
   }
 
 }

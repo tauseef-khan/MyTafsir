@@ -8,7 +8,7 @@
 
 <div class='row'>
     <p *ngFor='let ayah of ayahs'>
-        <span *ngFor='let section of ayah.splitWord' (click)="sendMessage()">
+        <span *ngFor='let section of ayah.splitWord' (click)="sendMessage(section, ayah)">
             {{ section }}    
         </span> 
     </p>
