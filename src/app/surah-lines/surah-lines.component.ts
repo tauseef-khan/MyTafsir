@@ -21,7 +21,7 @@ export class SurahLinesComponent implements OnInit {
   constructor(private surahService: SurahService) { }
 
   sendMessage(section: string, ayah: Word) {
-    this.messageEvent.emit({ section: section, ayah: ayah});
+    this.messageEvent.emit({ section: section, ayah: ayah, editMode: true});
   }
 
   ngOnInit(): void {

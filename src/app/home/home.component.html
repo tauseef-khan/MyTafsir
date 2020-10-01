@@ -3,7 +3,7 @@
         <app-surah-lines (messageEvent)="receiveMessage($event)"></app-surah-lines>
     </div>
     <div class='col notes-area'>
-        <app-notes-area></app-notes-area>
+        <app-notes-area [word]="word" [ayah]="ayah" [editMode]="editMode"></app-notes-area>
     </div>
 </div>
 
