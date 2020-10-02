@@ -1,3 +1,7 @@
+.notes-section p {
+    font-size: 20px;
+}
+
 .notes {
     display: block;
     margin-left: auto;

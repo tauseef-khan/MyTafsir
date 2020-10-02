@@ -1,6 +1,10 @@
-<textarea *ngIf='editMode; else editBlock' class='notes' rows='10' cols='100'>
-    {{ word }}...{{ ayah.overallVersenumber }}...{{ ayah.ayahNumberInSurah }}...{{ ayah.splitWord }}
-</textarea>
+<div *ngIf='editMode; else editBlock' class='notes-section'>
+    <p>Word clicked: {{ word }}</p>
+    <p>Overall Verse Number: {{ ayah.overallVersenumber }}</p>
+    <p>Ayah Number in Surah: {{ ayah.ayahNumberInSurah }}</p>
+
+    <textarea *ngIf='editMode; else editBlock' class='notes' rows='10' cols='100'></textarea>
+</div>
 
 <ng-template #editBlock>
     <textarea class='notes' readonly rows='10' cols='100'>
