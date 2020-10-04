@@ -1,11 +1,3 @@
-<!-- <div class='row'>
-    <p *ngFor='let ayah of ayahs'>
-        <span *ngFor='let section of ayah.splitWord' (click)="clickCallback(section, ayah)">
-            {{ section }}    
-        </span> 
-    </p>
-</div> -->
-
 <div class='row'>
     <p *ngFor='let ayah of ayahs'>
         <span *ngFor='let section of ayah.splitWord' (click)="sendMessage(section, ayah)">
