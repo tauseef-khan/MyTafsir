@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { SurahService } from '../surah.service';
 import { ISurah } from '../surah';
 import { Word } from '../word';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-surah-lines',
@@ -15,7 +16,13 @@ export class SurahLinesComponent implements OnInit {
   ayahs: Word[] = [];
   errorMessage: string;
 
+  @Output() messageEvent = new EventEmitter();
+
   constructor(private surahService: SurahService) { }
+
+  sendMessage(section: string, ayah: Word) {
+    this.messageEvent.emit({ section: section, ayah: ayah, editMode: true});
+  }
 
   ngOnInit(): void {
     this.surahService.getSurah().subscribe({
