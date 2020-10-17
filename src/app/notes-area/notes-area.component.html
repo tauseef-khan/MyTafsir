@@ -3,7 +3,10 @@
     <p>Overall Verse Number: {{ ayah.overallVersenumber }}</p>
     <p>Ayah Number in Surah: {{ ayah.ayahNumberInSurah }}</p>
 
-    <textarea *ngIf='editMode; else editBlock' class='notes' rows='10' cols='100'></textarea>
+    <textarea class='notes' [(ngModel)]='userText' rows='10' cols='100'>
+    </textarea>
+
+    <button type="submit" (click)="saveNotes()">Save</button>
 </div>
 
 <ng-template #editBlock>
