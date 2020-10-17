@@ -22,22 +22,15 @@ export class NotesAreaComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
-
-    console.log('CLICKED ON NEW WORD');
-
     if(this.word != undefined) {
       let storageKey = this.ayah.ayahNumberInSurah + ":" + this.ayah.overallVersenumber + ":" + this.word;
       this.userText = this.storage.get(storageKey);
-      console.log('Text to populate: ' + this.userText);
     }
   }
 
   saveNotes() {
-    //console.log('NOTES: ' + this.notes);
     let storageKey = this.ayah.ayahNumberInSurah + ":" + this.ayah.overallVersenumber + ":" + this.word;
     this.storage.set(storageKey, this.userText);
-
-    console.log('GETTING FROM STORAGE: ' + this.storage.get(storageKey));
   }
 
 }
