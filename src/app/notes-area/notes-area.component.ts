@@ -15,6 +15,7 @@ export class NotesAreaComponent implements OnInit, OnChanges {
   @Input() editMode: boolean;
 
   userText: string;
+  isVisible: boolean = false;
   
   constructor(@Inject(SESSION_STORAGE) private storage: StorageService) { }
 
@@ -31,6 +32,9 @@ export class NotesAreaComponent implements OnInit, OnChanges {
   saveNotes() {
     let storageKey = this.ayah.ayahNumberInSurah + ":" + this.ayah.overallVersenumber + ":" + this.word;
     this.storage.set(storageKey, this.userText);
+
+    this.isVisible = true;
+    setTimeout(()=> this.isVisible = false, 2500);
   }
 
 }

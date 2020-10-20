@@ -7,6 +7,7 @@
     </textarea>
 
     <button type="submit" (click)="saveNotes()">Save</button>
+    <p *ngIf="isVisible">Notes saved!</p>
 </div>
 
 <ng-template #editBlock>
