@@ -1,5 +1,8 @@
 import { Component, Inject, Input, OnChanges, OnInit } from '@angular/core';
+import { Packer } from 'docx';
+import * as fs from 'file-saver';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
+import { DocumentGenerator } from '../document-generator';
 import { Word } from '../word';
 
 @Component({
@@ -31,6 +34,17 @@ export class NotesAreaComponent implements OnInit, OnChanges {
   saveNotes() {
     let storageKey = this.ayah.ayahNumberInSurah + ":" + this.ayah.overallVersenumber + ":" + this.word;
     this.storage.set(storageKey, this.userText);
+  }
+
+  download(): void {
+    const documentCreator  = new DocumentGenerator();
+    const doc = documentCreator.create();
+
+    Packer.toBlob(doc).then(buffer => {
+      console.log(buffer);
+      fs.saveAs(buffer, "helloworld.docx");
+      console.log("Document created successfully");
+    })
   }
 
 }
