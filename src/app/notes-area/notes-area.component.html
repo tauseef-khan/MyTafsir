@@ -8,6 +8,7 @@
 
     <button type="submit" (click)="saveNotes()">Save</button>
     <button (click)="download()">Export notes</button>
+    <p *ngIf="isVisible">Notes saved!</p>
 </div>
 
 <ng-template #editBlock>
