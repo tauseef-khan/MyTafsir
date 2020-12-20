@@ -1,3 +1,9 @@
 .surah-lines {
     float: left;
+    width: 40%;
+}
+
+.notes-area {
+    width: 60%;
+    float: left;
 }
