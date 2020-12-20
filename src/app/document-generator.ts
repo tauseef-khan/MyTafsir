@@ -1,4 +1,4 @@
-import { AlignmentType, Document, HeadingLevel, Paragraph, TextRun, Underline } from 'docx';
+import { AlignmentType, Document, HeadingLevel, Paragraph, TextRun } from 'docx';
 import { StorageService } from 'ngx-webstorage-service';
 import { Word } from './word';
 
@@ -7,7 +7,6 @@ export class DocumentGenerator {
     public create(ayahs: Word[], storage: StorageService): Document {
         const document = new Document();
 
-        let content = '';
         const heading = new Paragraph ({
             text: "Surah An-Nas notes",
             heading: HeadingLevel.TITLE,
@@ -15,18 +14,10 @@ export class DocumentGenerator {
         });
 
         const formatNotes = this.createNotes(ayahs, storage);
-        //const headingEdu = this.createHeading("Education");
 
         document.addSection({ children: [heading, formatNotes] });
 
         return document;
-    }
-
-    public createHeading(text: string): Paragraph {
-        return new Paragraph ({
-            text: text,
-            heading: HeadingLevel.HEADING_1
-        });
     }
 
     public createNotes(ayahs: Word[], storage: StorageService): Paragraph {
@@ -54,7 +45,7 @@ export class DocumentGenerator {
                 if(userNotes != undefined) {
                     console.log('notes : ' + userNotes);
 
-                    let abc = new Paragraph({
+                    let wordNotes = new Paragraph({
                         spacing: {
                             after: 200
                         },
@@ -75,15 +66,7 @@ export class DocumentGenerator {
                         ]
                     });
 
-                    // let cde = new Paragraph({
-                    //     text: userNotes,
-                    //     spacing: {
-                    //         after: 200
-                    //     }
-                    // });
-
-                    notes.addChildElement(abc);
-                    //notes.addChildElement(cde);
+                    notes.addChildElement(wordNotes);
                 }
             }
         }
