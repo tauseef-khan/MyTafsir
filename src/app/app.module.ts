@@ -8,15 +8,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { NotesAreaComponent } from './notes-area/notes-area.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
-import { ImportExportNotesComponent } from './import-export-notes/import-export-notes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SurahLinesComponent,
     NotesAreaComponent,
-    HomeComponent,
-    ImportExportNotesComponent
+    HomeComponent
   ],
   imports: [
     FormsModule,
