@@ -9,7 +9,7 @@ import { tap, catchError } from 'rxjs/operators';
 })
 export class SurahService {
 
-  private surahUrl = 'http://api.alquran.cloud/v1/surah/114/editions/quran-uthmani';
+  private surahUrl = 'http://api.alquran.cloud/v1/surah/105/editions/quran-uthmani';
 
   constructor(private http: HttpClient) { }
 

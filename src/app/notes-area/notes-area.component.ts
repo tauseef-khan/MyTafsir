@@ -86,7 +86,7 @@ export class NotesAreaComponent implements OnInit, OnChanges {
 
     Packer.toBlob(doc).then(buffer => {
       console.log(buffer);
-      fs.saveAs(buffer, "Surah An-Nas notes.docx");
+      fs.saveAs(buffer, "Surah Al-Fil notes.docx");
       console.log("Document created successfully");
     })
   }
