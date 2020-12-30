@@ -8,7 +8,7 @@ export class DocumentGenerator {
         const document = new Document();
 
         const heading = new Paragraph ({
-            text: "Surah Al-Fil notes",
+            text: "Surah Al-Humazah notes",
             heading: HeadingLevel.TITLE,
             alignment: AlignmentType.CENTER
         });
